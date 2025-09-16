@@ -31,10 +31,10 @@ This is a secure, scalable backend system built with **Node.js**, **Express**, a
 
 ##  Installation
 
-git clone https://github.com/your-username/your-repo-name.git
-cd server
-npm install
-npm start
+- git clone https://github.com/Abdu11ahEjaz/Multi-Tenant-Organization-CRM-.git
+- cd server
+- npm install
+- npm start
 
 
 
