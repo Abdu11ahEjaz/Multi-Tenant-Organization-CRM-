@@ -1,0 +1,995 @@
+{
+	"info": {
+		"_postman_id": "6cf1c4d2-679a-4cfb-a0d2-93e584c74b6d",
+		"name": "Multi Tenant App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41954437",
+		"_collection_link": "https://api-team-6081.postman.co/workspace/Synctom-Internship~70380b4b-5926-46ee-b355-1c2718fa5a90/collection/41954437-6cf1c4d2-679a-4cfb-a0d2-93e584c74b6d?action=share&source=collection_link&creator=41954437"
+	},
+	"item": [
+		{
+			"name": "SuperAdmin Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Enterprise owner\",\r\n  \"email\": \"abdullahraj982@gmail.com\",\r\n  \"password\": \"owner\",\r\n  \"role\": \"staff\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/superadmin/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"superadmin",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SuperAdmin Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"abdullahraj982@gmail.com\",\r\n  \"password\": \"superadmin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Org (Super Admin only)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Last test Software Services",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "i-10/1 ISB",
+							"type": "text"
+						},
+						{
+							"key": "logo",
+							"type": "file",
+							"src": "postman-cloud:///1f0743d3-f5b2-43d0-8325-82789b236b70"
+						},
+						{
+							"key": "subscriptionPlan",
+							"value": "Enterprise",
+							"type": "text"
+						},
+						{
+							"key": "createdAt",
+							"value": "01-09-2025",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/org",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"org"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Synctom Software Services",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "i9-4 islamabad",
+							"disabled": true
+						},
+						{
+							"key": "logo",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Org(Super Admin)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}" ,
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/org/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"org",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get single org (SuperAdmin)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/org/68c13c92b797b03f1e4a8527",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"org",
+						"68c13c92b797b03f1e4a8527"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update org(Super admin only)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Synctom House",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": " i/4 ISB",
+							"type": "text"
+						},
+						{
+							"key": "logo",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/org/68b55050d5cef09fe2d514ac",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"org",
+						"68b55050d5cef09fe2d514ac"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Del Org",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "organizationId",
+							"value": "68b55050d5cef09fe2d514ac",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/org/68b55505bb2cd30d3b6c8307",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"org",
+						"68b55505bb2cd30d3b6c8307"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Org Owner Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Abdullah Ejaz\",\r\n  \"email\": \"abdullahraj@gmail.com\",\r\n  \"password\": \"Owner\",\r\n  \"role\": \"Owner\",\r\n  \"organizationId\":\"68c13c92b797b03f1e4a8527\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Org owner login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \r\n    \"organizationId\":\"68c13c92b797b03f1e4a8527\",\r\n    \"email\": \"abdullahraj@gmail.com\",\r\n    \"password\": \"Owner\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Org users",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n  \"name\": \"StaffEnterprise\",\r\n  \"email\":\"abdullah@gmail.com\",\r\n  \"password\": \"staff\",\r\n  \"role\": \"Staff\"  \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Org admin login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"organizationId\": \"68c13c92b797b03f1e4a8527\",\r\n    \"email\": \"abdullahraj@gmail.com\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Org Staff Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \"organizationId\": \"68b70c6561afbd08c815e5d1\",\r\n    \"email\": \"staff@gmail.com\",\r\n    \"password\": \"staff\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "organizationId ",
+							"value": "68b70c6561afbd08c815e5d1",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User by Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "organizationId ",
+							"value": "68b5559ae1b09abd4e55527a",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users/68b56cd739b12042d95477a7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"68b56cd739b12042d95477a7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Data",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Owner",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "owner",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "owner@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/users/68b56cd739b12042d95477a7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"68b56cd739b12042d95477a7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Clients",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "organizationId",
+							"value": "68b5559ae1b09abd4e55527a",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "Ehtasham",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "abdullahraj@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "0899078787",
+							"type": "text"
+						},
+						{
+							"key": "company",
+							"value": "Synctom",
+							"type": "text"
+						},
+						{
+							"key": "tags",
+							"value": "ashdkashdkashdk",
+							"type": "text"
+						},
+						{
+							"key": "assignedTo",
+							"value": "68b8262007b8c6128141e0e2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/clients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Clients",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/clients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Client by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/clients/68b8269907b8c6128141e0e7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"clients",
+						"68b8269907b8c6128141e0e7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Client by Id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "abdullah",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/clients/68b6badcff1e17d2c2eef8ae",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"clients",
+						"68b6badcff1e17d2c2eef8ae"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Client",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/clients/68b6c6cbd35d501f47d0860a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"clients",
+						"68b6c6cbd35d501f47d0860a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Activity",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "clientId",
+							"value": "68b8269907b8c6128141e0e7",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "Meeting",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "The first meeting",
+							"type": "text"
+						},
+						{
+							"key": "date",
+							"value": "10-09-25",
+							"type": "text"
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": [
+								"postman-cloud:///1f0742b7-6ba1-4e",
+								"postman-cloud:///1f0742c3-5bb8-4"
+							]
+						},
+						{
+							"key": "assignedTo",
+							"value": "68b8262007b8c6128141e0e2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/activity",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"activity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all activities",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/activity",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"activity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update activity",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clientId\":\"68b8269907b8c6128141e0e7\",\r\n    \"type\":\"Call\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/activity/68b831fb3aaec57a06208711",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"activity",
+						"68b831fb3aaec57a06208711"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Activity",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/activity/68c107c31ec93cd0adde301b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"activity",
+						"68c107c31ec93cd0adde301b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Org analytics",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/analytics/users/active",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"analytics",
+						"users",
+						"active"
+					],
+					"query": [
+						{
+							"key": "Authoriz",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "superAdmin dashboard",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/superAdmin/dashboard",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"superAdmin",
+						"dashboard"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
