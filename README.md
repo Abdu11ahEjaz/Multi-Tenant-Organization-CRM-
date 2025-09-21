@@ -1,4 +1,4 @@
-# MUlti-Tanent Organizational Management 
+# Multi-Tanent Organizational Management 
 
 This is a secure, scalable backend system built with **Node.js**, **Express**, and **MongoDB**,**Cloudinary**,**Stripe** designed to manage users, clients, meetings, and activities, payments across organizations with strict role-based access control.
 
